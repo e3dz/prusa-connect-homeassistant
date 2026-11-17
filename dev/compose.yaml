@@ -1,0 +1,88 @@
+# A fresh Home Assistant with this integration installed (not set up), next to
+# a Prusa Connect demo server with simulated printers. Run it through the
+# Makefile next to this file. See README.md.
+#
+# Everything runs on the host network, so http://localhost:8090 is the same
+# server for Home Assistant and for the browser (the sidebar panel opens it in
+# the browser), and Home Assistant discovers the demo over mDNS.
+#
+# - connect: an external Prusa Connect with simulated printers, port 8090
+# - releases: development releases for the server Home Assistant runs itself
+#   (the embedded mode, port 8080 by default), port 8091
+# - homeassistant: port 8123
+name: prusa-connect-ha-dev
+
+services:
+  connect:
+    # The demo image Prusa Connect keeps for its own mockup: cmd/demo (the
+    # server with a simulated fleet) and the embedded web app.
+    build:
+      context: ${PRUSA_CONNECT_SRC:-./prusa-connect}
+      dockerfile: docker/mockup/Dockerfile
+    image: prusa-connect-ha-dev/connect
+    network_mode: host
+    entrypoint:
+      - /prusa_connect_demo
+      - -addr=0.0.0.0:${CONNECT_PORT:-8090}
+      - -dir=/data
+      - -password=${CONNECT_PASSWORD:-prusa-demo}
+      - -printers=${CONNECT_PRINTERS:-3}
+      - -flap=0
+    volumes:
+      - connect-data:/data
+    healthcheck:
+      test: ["CMD", "/prusa_connect", "core", "-addr", "127.0.0.1:${CONNECT_PORT:-8090}", "healthcheck"]
+      interval: 5s
+      start_period: 60s
+    restart: unless-stopped
+
+  # The builder stage of the demo image: the source with the web app built.
+  # Only built, never started.
+  connect-builder:
+    build:
+      context: ${PRUSA_CONNECT_SRC:-./prusa-connect}
+      dockerfile: docker/mockup/Dockerfile
+      target: builder
+    image: prusa-connect-ha-dev/connect-builder
+    scale: 0
+
+  releases:
+    build:
+      context: ./releases
+      additional_contexts:
+        builder: service:connect-builder
+    image: prusa-connect-ha-dev/releases
+    network_mode: host
+    command: ["${RELEASES_PORT:-8091}", "/prusa_connect"]
+    volumes:
+      - releases-data:/data
+    restart: unless-stopped
+
+  # Simulated printers that dial a running server: `make printers` starts them.
+  printers:
+    build:
+      context: ./printers
+      additional_contexts:
+        builder: service:connect-builder
+    image: prusa-connect-ha-dev/printers
+    network_mode: host
+    profiles: [printers]
+
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:${HA_VERSION:-stable}
+    network_mode: host
+    volumes:
+      - ./ha-config:/config
+      # The integration from this checkout, read only: edit it here and run
+      # `make restart`.
+      - ../custom_components/prusa_connect:/config/custom_components/prusa_connect:ro
+    environment:
+      - TZ=${TZ:-Europe/Prague}
+    depends_on:
+      - connect
+      - releases
+    restart: unless-stopped
+
+volumes:
+  connect-data:
+  releases-data:

@@ -1,0 +1,286 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Prusa Connect (on-premise)",
+        "description": "Kde má server Prusa Connect běžet?",
+        "menu_options": {
+          "embedded": "V Home Assistantu (nainstalovat a spustit tady)",
+          "external": "Připojit k serveru, který běží jinde"
+        }
+      },
+      "embedded": {
+        "title": "Spustit Prusa Connect v Home Assistantu",
+        "description": "Home Assistant stáhne nejnovější release Prusa Connect, ověří jeho podpis a spustí ho. Tiskárny i váš prohlížeč ho najdou na adrese Home Assistantu a tomto portu.",
+        "data": {
+          "port": "Port"
+        },
+        "data_description": {
+          "port": "Port, který na tomto stroji nepoužívá žádná jiná služba."
+        }
+      },
+      "external": {
+        "title": "Připojení k Prusa Connect",
+        "description": "Zadejte adresu serveru Prusa Connect, například https://192.168.1.10:8080.",
+        "data": {
+          "url": "URL"
+        },
+        "data_description": {
+          "url": "Adresa, na které se otevírá webová aplikace Prusa Connect, včetně portu."
+        }
+      },
+      "zeroconf_confirm": {
+        "title": "Nalezen Prusa Connect",
+        "description": "Chcete nastavit {name} na adrese {url}?"
+      },
+      "certificate": {
+        "title": "Důvěřovat tomuto certifikátu?",
+        "description": "Server na adrese {url} předkládá certifikát, kterému tento systém nedůvěřuje. U serveru s vlastní certifikační autoritou je to běžné. Porovnejte tento otisk SHA-256 s otiskem, který ukazuje Prusa Connect, a potvrďte jen tehdy, když se shodují:\n\n`{fingerprint}`\n\nHome Assistant pak bude důvěřovat právě tomuto certifikátu a žádnému jinému."
+      },
+      "auth": {
+        "title": "Přihlášení k Prusa Connect",
+        "description": "Jak má Home Assistant získat přístup k {url}?",
+        "menu_options": {
+          "pair": "Spárovat kódem (schválíte ho v Prusa Connect)",
+          "token": "Vložit API token"
+        }
+      },
+      "token": {
+        "title": "API token",
+        "description": "V Prusa Connect na adrese {url} otevřete Settings, API credentials (/settings/tokens) a vytvořte token pro Home Assistant. Vložte ho sem. Token platí nejvýše 365 dní; po vypršení si Home Assistant řekne o nový.",
+        "data": {
+          "token": "Token"
+        },
+        "data_description": {
+          "token": "Bearer token začínající pcl_."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Nové přihlášení",
+        "description": "Token pro {url} už server nepřijímá.",
+        "menu_options": {
+          "pair": "Spárovat kódem (schválíte ho v Prusa Connect)",
+          "reauth_token": "Vložit nový API token"
+        }
+      },
+      "reauth_token": {
+        "title": "Nový API token",
+        "description": "Vytvořte v Prusa Connect na adrese {url} nový token a vložte ho sem.",
+        "data": {
+          "token": "Token"
+        },
+        "data_description": {
+          "token": "Bearer token začínající pcl_."
+        }
+      },
+      "reconfigure": {
+        "title": "Změna adresy serveru",
+        "data": {
+          "url": "URL"
+        },
+        "data_description": {
+          "url": "Adresa, na které se otevírá webová aplikace Prusa Connect, včetně portu."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nepodařilo se připojit",
+      "invalid_auth": "Token nebyl přijat",
+      "insufficient_permissions": "Token nemá oprávnění číst tiskárny",
+      "invalid_url": "Zadejte adresu http nebo https",
+      "not_prusa_connect": "Tato adresa neodpovídá jako Prusa Connect",
+      "certificate_changed": "Certifikát serveru už neodpovídá důvěryhodnému otisku",
+      "unknown": "Neočekávaná chyba"
+    },
+    "abort": {
+      "already_configured": "Tento server už je nastaven",
+      "reauth_successful": "Opětovné ověření proběhlo úspěšně",
+      "reconfigure_successful": "Změna nastavení proběhla úspěšně",
+      "not_supported": "Server používá verzi API, kterou tato integrace nepodporuje",
+      "cannot_connect": "Nepodařilo se připojit",
+      "not_prusa_connect": "Tato adresa neodpovídá jako Prusa Connect",
+      "certificate_changed": "Certifikát serveru už neodpovídá důvěryhodnému otisku",
+      "pairing_denied": "Párování bylo v Prusa Connect zamítnuto",
+      "pairing_expired": "Kód vypršel dřív, než byl schválen. Začněte znovu",
+      "pairing_unavailable": "Tento server párování nenabízí; vložte token",
+      "invalid_auth": "Token nebyl přijat",
+      "insufficient_permissions": "Schválený přístup nemá oprávnění číst tiskárny",
+      "unknown": "Neočekávaná chyba",
+      "install_failed": "Prusa Connect se nepodařilo nainstalovat nebo se nespustil. Důvod je v logu Home Assistantu",
+      "embedded_has_no_address": "Server v Home Assistantu nemá adresu, kterou by šlo změnit",
+      "wrong_server": "Toto je jiný server Prusa Connect, než pro který byla tato položka nastavena. Přidejte ho jako nový server"
+    },
+    "progress": {
+      "wait_for_approval": "Otevřete {url} a přihlaste se do Prusa Connect. Zkontrolujte, že kód je **{code}**, a Home Assistant schvalte. Po schválení toto okno pokračuje samo.",
+      "install": "Stahuji Prusa Connect, ověřuji podpis a spouštím ho…",
+      "first_run": "Otevřete {url} a projděte průvodce prvním spuštěním Prusa Connect. Až se zeptá na setup kód, zadejte:\n\n**{code}**\n\nVytvořte tam svého administrátora. Po dokončení průvodce toto okno pokračuje samo."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "cameras": "Entity kamer",
+          "update_throttle": "Minimální odstup aktualizací stavu",
+          "sidebar": "Zobrazit webovou aplikaci v postranním panelu",
+          "panel_url": "Adresa webové aplikace",
+          "prerelease": "Nabízet alpha a beta verze"
+        },
+        "data_description": {
+          "cameras": "Vytvořit entitu kamery pro každou kameru nastavenou v Prusa Connect.",
+          "update_throttle": "Měření chodí několikrát za sekundu; do Home Assistantu se zapisují nejvýše takto často.",
+          "sidebar": "Položka v postranním panelu otevře Prusa Connect uvnitř Home Assistantu. Do Prusa Connect se přihlásíte tam.",
+          "panel_url": "Adresa, na které Prusa Connect otevírá váš prohlížeč, pokud se liší od té, kterou používá Home Assistant. Home Assistant běžící přes https tu potřebuje adresu https.",
+          "prerelease": "Entita aktualizace nabízí i předběžné verze serveru, nejen stabilní."
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Zadejte adresu http nebo https"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "active": {
+        "name": "Nástroj {tool} aktivní"
+      },
+      "slot_active": {
+        "name": "Nástroj {tool} slot {slot} aktivní"
+      },
+      "nozzle_high_flow": {
+        "name": "Nástroj {tool} high-flow tryska"
+      },
+      "nozzle_hardened": {
+        "name": "Nástroj {tool} kalená tryska"
+      }
+    },
+    "button": {
+      "pause": {
+        "name": "Pozastavit tisk"
+      },
+      "resume": {
+        "name": "Pokračovat v tisku"
+      },
+      "stop": {
+        "name": "Zastavit tisk"
+      }
+    },
+    "camera": {
+      "camera": {
+        "name": "Kamera {camera}"
+      }
+    },
+    "number": {
+      "bed_target_temperature": {
+        "name": "Cílová teplota podložky"
+      },
+      "nozzle_target_temperature": {
+        "name": "Nástroj {tool} cílová teplota trysky"
+      },
+      "speed": {
+        "name": "Rychlost tisku"
+      }
+    },
+    "sensor": {
+      "state": {
+        "name": "Stav",
+        "state": {
+          "idle": "Nečinná",
+          "busy": "Zaneprázdněná",
+          "ready": "Připravena",
+          "printing": "Tiskne",
+          "paused": "Pozastavena",
+          "finished": "Dokončeno",
+          "stopped": "Zastaveno",
+          "attention": "Vyžaduje pozornost",
+          "error": "Chyba"
+        },
+        "state_attributes": {
+          "build_volume_x": {
+            "name": "Tiskový prostor X"
+          },
+          "build_volume_y": {
+            "name": "Tiskový prostor Y"
+          },
+          "build_volume_z": {
+            "name": "Tiskový prostor Z"
+          }
+        }
+      },
+      "progress": {
+        "name": "Průběh"
+      },
+      "time_remaining": {
+        "name": "Zbývající čas"
+      },
+      "time_printing": {
+        "name": "Doba tisku"
+      },
+      "finish_time": {
+        "name": "Čas dokončení"
+      },
+      "job_name": {
+        "name": "Soubor"
+      },
+      "bed_temperature": {
+        "name": "Teplota podložky"
+      },
+      "axis_x": {
+        "name": "Pozice X"
+      },
+      "axis_y": {
+        "name": "Pozice Y"
+      },
+      "axis_z": {
+        "name": "Pozice Z"
+      },
+      "nozzle_temperature": {
+        "name": "Nástroj {tool} teplota trysky"
+      },
+      "material": {
+        "name": "Nástroj {tool} materiál"
+      },
+      "slot_material": {
+        "name": "Nástroj {tool} slot {slot} materiál"
+      },
+      "nozzle_diameter": {
+        "name": "Nástroj {tool} průměr trysky"
+      },
+      "print_fan_speed": {
+        "name": "Nástroj {tool} otáčky ventilátoru tisku"
+      },
+      "heatbreak_fan_speed": {
+        "name": "Nástroj {tool} otáčky ventilátoru heatbreaku"
+      },
+      "feeder_progress": {
+        "name": "Nástroj {tool} kód průběhu podavače"
+      },
+      "feeder_command": {
+        "name": "Nástroj {tool} operace podavače"
+      }
+    },
+    "update": {
+      "server": {
+        "name": "Server"
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "Prusa Connect není dostupný: {error}"
+    },
+    "command_refused": {
+      "message": "Tiskárna příkaz odmítla: {reason}"
+    },
+    "command_forbidden": {
+      "message": "Token nemá oprávnění ovládat tuto tiskárnu"
+    },
+    "command_unsupported": {
+      "message": "Tiskárna tento příkaz nepodporuje"
+    },
+    "command_failed": {
+      "message": "Odeslání příkazu selhalo: {error}"
+    }
+  }
+}

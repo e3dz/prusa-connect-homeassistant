@@ -1,0 +1,286 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Prusa Connect (on-premise)",
+        "description": "Where should the Prusa Connect server run?",
+        "menu_options": {
+          "embedded": "Inside Home Assistant (install and run it here)",
+          "external": "Connect to a server that runs elsewhere"
+        }
+      },
+      "embedded": {
+        "title": "Run Prusa Connect inside Home Assistant",
+        "description": "Home Assistant downloads the newest Prusa Connect release, checks its signature and runs it. Printers and your browser reach it at Home Assistant's address and this port.",
+        "data": {
+          "port": "Port"
+        },
+        "data_description": {
+          "port": "A port no other service on this machine uses."
+        }
+      },
+      "external": {
+        "title": "Connect to Prusa Connect",
+        "description": "Enter the address of your Prusa Connect server, for example https://192.168.1.10:8080.",
+        "data": {
+          "url": "URL"
+        },
+        "data_description": {
+          "url": "The origin the Prusa Connect web app opens on, with its port."
+        }
+      },
+      "zeroconf_confirm": {
+        "title": "Discovered Prusa Connect",
+        "description": "Do you want to set up {name} at {url}?"
+      },
+      "certificate": {
+        "title": "Trust this certificate?",
+        "description": "The server at {url} presents a certificate that this system does not trust, which is normal for a server that made its own certificate authority. Compare this SHA-256 fingerprint with the one Prusa Connect shows, and submit only if they match:\n\n`{fingerprint}`\n\nHome Assistant then trusts exactly this certificate and no other."
+      },
+      "auth": {
+        "title": "Sign in to Prusa Connect",
+        "description": "How should Home Assistant get access to {url}?",
+        "menu_options": {
+          "pair": "Pair with a code (approve it in Prusa Connect)",
+          "token": "Paste an API token"
+        }
+      },
+      "token": {
+        "title": "API token",
+        "description": "In Prusa Connect at {url}, open Settings, then API credentials (/settings/tokens), and create a token for Home Assistant. Paste it here. A token can be valid for at most 365 days; you will be asked for a new one when it expires.",
+        "data": {
+          "token": "Token"
+        },
+        "data_description": {
+          "token": "A bearer token starting with pcl_."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sign in again",
+        "description": "The token for {url} is no longer accepted.",
+        "menu_options": {
+          "pair": "Pair with a code (approve it in Prusa Connect)",
+          "reauth_token": "Paste a new API token"
+        }
+      },
+      "reauth_token": {
+        "title": "New API token",
+        "description": "Create a new token in Prusa Connect at {url} and paste it here.",
+        "data": {
+          "token": "Token"
+        },
+        "data_description": {
+          "token": "A bearer token starting with pcl_."
+        }
+      },
+      "reconfigure": {
+        "title": "Change the server address",
+        "data": {
+          "url": "URL"
+        },
+        "data_description": {
+          "url": "The origin the Prusa Connect web app opens on, with its port."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "The token was not accepted",
+      "insufficient_permissions": "The token may not read printers",
+      "invalid_url": "Enter an http or https address",
+      "not_prusa_connect": "This address does not answer like Prusa Connect",
+      "certificate_changed": "The server's certificate no longer matches the trusted fingerprint",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This server is already configured",
+      "reauth_successful": "Re-authentication was successful",
+      "reconfigure_successful": "Re-configuration was successful",
+      "not_supported": "This server speaks an API version this integration does not support",
+      "cannot_connect": "Failed to connect",
+      "not_prusa_connect": "This address does not answer like Prusa Connect",
+      "certificate_changed": "The server's certificate no longer matches the trusted fingerprint",
+      "pairing_denied": "The pairing was denied in Prusa Connect",
+      "pairing_expired": "The pairing code expired before it was approved. Start again",
+      "pairing_unavailable": "This server does not offer pairing; paste a token instead",
+      "invalid_auth": "The token was not accepted",
+      "insufficient_permissions": "The approved access may not read printers",
+      "unknown": "Unexpected error",
+      "install_failed": "Prusa Connect could not be installed or did not start. The Home Assistant log says why",
+      "embedded_has_no_address": "The server inside Home Assistant has no address to change",
+      "wrong_server": "This is a different Prusa Connect server from the one this entry was set up for. Add it as a new server instead"
+    },
+    "progress": {
+      "wait_for_approval": "Open {url} and sign in to Prusa Connect. Check that the code is **{code}**, then approve Home Assistant. This window continues on its own once you approve.",
+      "install": "Downloading Prusa Connect and checking its signature, then starting it…",
+      "first_run": "Open {url} and finish Prusa Connect's first-run wizard. When it asks for the setup code, enter:\n\n**{code}**\n\nCreate your administrator there. This window continues on its own when the wizard is done."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "cameras": "Camera entities",
+          "update_throttle": "Minimum time between state updates",
+          "sidebar": "Show the web app in the sidebar",
+          "panel_url": "Web app address",
+          "prerelease": "Offer alpha and beta releases"
+        },
+        "data_description": {
+          "cameras": "Create a camera entity for every camera declared in Prusa Connect.",
+          "update_throttle": "Readings arrive several times a second; they are written to Home Assistant at most this often.",
+          "sidebar": "A sidebar item opens Prusa Connect inside Home Assistant. You sign in to Prusa Connect there.",
+          "panel_url": "The address your browser opens Prusa Connect at, when it differs from the one Home Assistant uses. A Home Assistant served over https needs an https address here.",
+          "prerelease": "The update entity offers pre-releases of the server too, not only stable ones."
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Enter an http or https address"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "active": {
+        "name": "Tool {tool} active"
+      },
+      "slot_active": {
+        "name": "Tool {tool} slot {slot} active"
+      },
+      "nozzle_high_flow": {
+        "name": "Tool {tool} high-flow nozzle"
+      },
+      "nozzle_hardened": {
+        "name": "Tool {tool} hardened nozzle"
+      }
+    },
+    "button": {
+      "pause": {
+        "name": "Pause print"
+      },
+      "resume": {
+        "name": "Resume print"
+      },
+      "stop": {
+        "name": "Stop print"
+      }
+    },
+    "camera": {
+      "camera": {
+        "name": "Camera {camera}"
+      }
+    },
+    "number": {
+      "bed_target_temperature": {
+        "name": "Bed target temperature"
+      },
+      "nozzle_target_temperature": {
+        "name": "Tool {tool} nozzle target temperature"
+      },
+      "speed": {
+        "name": "Print speed"
+      }
+    },
+    "sensor": {
+      "state": {
+        "name": "State",
+        "state": {
+          "idle": "Idle",
+          "busy": "Busy",
+          "ready": "Ready",
+          "printing": "Printing",
+          "paused": "Paused",
+          "finished": "Finished",
+          "stopped": "Stopped",
+          "attention": "Attention",
+          "error": "Error"
+        },
+        "state_attributes": {
+          "build_volume_x": {
+            "name": "Build volume X"
+          },
+          "build_volume_y": {
+            "name": "Build volume Y"
+          },
+          "build_volume_z": {
+            "name": "Build volume Z"
+          }
+        }
+      },
+      "progress": {
+        "name": "Progress"
+      },
+      "time_remaining": {
+        "name": "Time remaining"
+      },
+      "time_printing": {
+        "name": "Print time"
+      },
+      "finish_time": {
+        "name": "Finish time"
+      },
+      "job_name": {
+        "name": "File"
+      },
+      "bed_temperature": {
+        "name": "Bed temperature"
+      },
+      "axis_x": {
+        "name": "X position"
+      },
+      "axis_y": {
+        "name": "Y position"
+      },
+      "axis_z": {
+        "name": "Z position"
+      },
+      "nozzle_temperature": {
+        "name": "Tool {tool} nozzle temperature"
+      },
+      "material": {
+        "name": "Tool {tool} material"
+      },
+      "slot_material": {
+        "name": "Tool {tool} slot {slot} material"
+      },
+      "nozzle_diameter": {
+        "name": "Tool {tool} nozzle diameter"
+      },
+      "print_fan_speed": {
+        "name": "Tool {tool} print fan speed"
+      },
+      "heatbreak_fan_speed": {
+        "name": "Tool {tool} heatbreak fan speed"
+      },
+      "feeder_progress": {
+        "name": "Tool {tool} feeder progress code"
+      },
+      "feeder_command": {
+        "name": "Tool {tool} feeder operation"
+      }
+    },
+    "update": {
+      "server": {
+        "name": "Server"
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "Cannot reach Prusa Connect: {error}"
+    },
+    "command_refused": {
+      "message": "The printer refused the command: {reason}"
+    },
+    "command_forbidden": {
+      "message": "The token may not control this printer"
+    },
+    "command_unsupported": {
+      "message": "This printer does not support the command"
+    },
+    "command_failed": {
+      "message": "Sending the command failed: {error}"
+    }
+  }
+}

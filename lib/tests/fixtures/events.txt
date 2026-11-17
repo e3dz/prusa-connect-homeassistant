@@ -1,0 +1,26 @@
+retry: 2000
+
+event: com.prusa.connect.device.telemetry.sampled
+data: {"specversion":"1.0","id":"01M5QAZHET9H8W8JYC6NMC4T03","source":"urn:prusa:site:demo/device/637d5756-4645-4a08-906f-e8dbb9afc56f","type":"com.prusa.connect.device.telemetry.sampled","time":"2026-10-24T16:12:55.642618Z","subject":"device:637d5756-4645-4a08-906f-e8dbb9afc56f","sequence":"00000000000000001065","epoch":"01M5QAX4CAPYA6Q5KZ89ZZ4PN8","hops":0,"evclass":"telemetry","data":{"path":"/job/progress","value":9}}
+
+event: com.prusa.connect.device.telemetry.sampled
+data: {"specversion":"1.0","id":"01M5QAZHET9H8W8JYC6NMC4T05","source":"urn:prusa:site:demo/device/637d5756-4645-4a08-906f-e8dbb9afc56f","type":"com.prusa.connect.device.telemetry.sampled","time":"2026-10-24T16:12:55.64263Z","subject":"device:637d5756-4645-4a08-906f-e8dbb9afc56f","sequence":"00000000000000001067","epoch":"01M5QAX4CAPYA6Q5KZ89ZZ4PN8","hops":0,"evclass":"telemetry","data":{"path":"/state","value":"PRINTING"}}
+
+event: com.prusa.connect.device.telemetry.sampled
+data: {"specversion":"1.0","id":"01M5QAZHET9H8W8JYC6NMC4T07","source":"urn:prusa:site:demo/device/637d5756-4645-4a08-906f-e8dbb9afc56f","type":"com.prusa.connect.device.telemetry.sampled","time":"2026-10-24T16:12:55.642655Z","subject":"device:637d5756-4645-4a08-906f-e8dbb9afc56f","sequence":"00000000000000001069","epoch":"01M5QAX4CAPYA6Q5KZ89ZZ4PN8","hops":0,"evclass":"telemetry","data":{"path":"/temperature/bed","value":60}}
+
+event: com.prusa.connect.device.telemetry.sampled
+data: {"specversion":"1.0","id":"01M5QAZHET9H8W8JYC6NMC4T0A","source":"urn:prusa:site:demo/device/637d5756-4645-4a08-906f-e8dbb9afc56f","type":"com.prusa.connect.device.telemetry.sampled","time":"2026-10-24T16:12:55.642671Z","subject":"device:637d5756-4645-4a08-906f-e8dbb9afc56f","sequence":"00000000000000001072","epoch":"01M5QAX4CAPYA6Q5KZ89ZZ4PN8","hops":0,"evclass":"telemetry","data":{"path":"/tools/0/nozzle_temp","value":215}}
+
+event: com.prusa.connect.device.telemetry.sampled
+data: {"specversion":"1.0","id":"01M5QAZHHKCR3Y801R4M20BVP3","source":"urn:prusa:site:demo/device/e34e1d60-3393-4d6b-a709-edb7f01cfaea","type":"com.prusa.connect.device.telemetry.sampled","time":"2026-10-24T16:12:55.731373Z","subject":"device:e34e1d60-3393-4d6b-a709-edb7f01cfaea","sequence":"00000000000000009122","epoch":"01M5QAX4CAPYA6Q5KZ89ZZ4PN8","hops":0,"evclass":"telemetry","data":{"path":"/tools/2/nozzle_temp","value":27}}
+
+event: com.prusa.connect.device.telemetry.sampled
+data: {"specversion":"1.0","id":"01M5QAZHHQF5GS05PZNE4J42NK","source":"urn:prusa:site:demo/device/6d3ea1c6-dfef-4de7-8823-82cc20c3b14e","type":"com.prusa.connect.device.telemetry.sampled","time":"2026-10-24T16:12:55.73561Z","subject":"device:6d3ea1c6-dfef-4de7-8823-82cc20c3b14e","sequence":"00000000000000005668","epoch":"01M5QAX4CAPYA6Q5KZ89ZZ4PN8","hops":0,"evclass":"telemetry","data":{"path":"/tools/0.1/material_package_instance/package/material/abbreviation","value":"PETG"}}
+
+: keep-alive
+
+id: 01M5QAX4:device/637d5756-4645-4a08-906f-e8dbb9afc56f:412
+event: com.prusa.connect.device.presence.changed
+data: {"specversion":"1.0","id":"01K3Q7XA26D0WM4T1ZJ8P5GHIJ","source":"urn:prusa:site:demo/device/637d5756-4645-4a08-906f-e8dbb9afc56f","type":"com.prusa.connect.device.presence.changed","time":"2026-10-24T16:13:05Z","subject":"device:637d5756-4645-4a08-906f-e8dbb9afc56f","sequence":"00000000000000000412","epoch":"01M5QAX4","hops":0,"evclass":"state","data":{"device_id":"637d5756-4645-4a08-906f-e8dbb9afc56f","driver":"xbuddy","connected":false}}
+

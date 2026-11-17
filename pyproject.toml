@@ -1,0 +1,65 @@
+# Tooling for the Home Assistant integration. The client library has its own
+# pyproject under lib/.
+[project]
+name = "prusa-connect-homeassistant"
+version = "0.1.0"
+description = "Home Assistant integration for Prusa Connect"
+license = "MIT"
+requires-python = ">=3.13"
+
+# How a release ships the client library (lib/). Read by scripts/vendor_lib.py
+# and the release workflow; see "The client library" in README.md.
+[tool.prusa-connect.packaging]
+# "bundled": the integration carries a copy of lib/ in _vendor/ (no PyPI).
+# "pypi": the release leaves the copy out and requires prusa-connect==<lib version>.
+library = "bundled"
+# Dependencies of lib/ that Home Assistant installs itself; bundled mode leaves them out of manifest.json.
+provided-by-home-assistant = ["aiohttp"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py313"
+# Generated from lib/src, which is linted itself.
+extend-exclude = ["custom_components/prusa_connect/_vendor"]
+
+[tool.ruff.lint]
+select = [
+  "A", "ASYNC", "B", "BLE", "C4", "D2", "D3", "E", "F", "FLY", "G", "I", "INP",
+  "LOG", "N", "PERF", "PIE", "PL", "PT", "PYI", "RET", "RSE", "RUF", "S", "SIM",
+  "SLF", "T20", "TC", "TID", "UP", "W",
+]
+ignore = [
+  "D202", "D203", "D213", "PLR0911", "PLR0912", "PLR0913", "PLR2004", "PLC0415",
+  "S101", "TC001", "TC002", "TC003", "TC006",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106", "SLF001", "PLR2004", "INP001"]
+"lib/tests/**" = ["S105", "S106", "SLF001", "INP001"]
+# catalog_pr.py runs the GitHub CLI (gh) from PATH with fixed arguments.
+"scripts/**" = ["INP001", "T201", "S101", "S603", "S607"]
+# The dev environment's setup talks to two local servers over plain HTTP.
+"dev/**" = ["INP001", "T201", "S310"]
+# The library's public names, re-exported from the bundled or installed package.
+"custom_components/prusa_connect/library.py" = ["F403"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["custom_components", "prusa_connect"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+warn_unreachable = true
+explicit_package_bases = true
+mypy_path = "lib/src"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.coverage.run]
+source = ["custom_components"]
+# The bundled library is covered by lib/tests.
+omit = ["custom_components/prusa_connect/_vendor/*"]

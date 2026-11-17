@@ -1,0 +1,15 @@
+{
+  "enabled": false,
+  "title": "Prusa Connect",
+  "default_language": "en",
+  "theme": "system",
+  "skin": "prusa",
+  "api_reference": "/docs",
+  "printer_admission": "automatic",
+  "printer_custom_ca": false,
+  "documentation": "https://beta.prusa3d.com/connect-local/docs/0.0.1/",
+  "dashboards": true,
+  "modules": true,
+  "diagnostics_send_url": "https://beta.prusa3d.com",
+  "diagnostics": true
+}

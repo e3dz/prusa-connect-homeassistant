@@ -1,0 +1,90 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.mode.outputs.mode }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag and manifest versions agree
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          manifest=$(python3 -c "import json;print(json.load(open('custom_components/prusa_connect/manifest.json'))['version'])")
+          test "$tag" = "$manifest" || { echo "tag $tag != manifest $manifest"; exit 1; }
+      - name: Bundled library matches lib/
+        run: python3 scripts/vendor_lib.py check
+      # tool.prusa-connect.packaging.library in pyproject.toml selects the mode.
+      - id: mode
+        name: Library mode
+        env:
+          PYPI_PUBLISH: ${{ vars.PYPI_PUBLISH }}
+        run: |
+          mode=$(python3 scripts/vendor_lib.py mode)
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          if [ "$mode" = pypi ] && [ "$PYPI_PUBLISH" != true ]; then
+            echo "library = \"pypi\" needs the PYPI_PUBLISH variable, or the release requires a package nobody published"
+            exit 1
+          fi
+
+  build-library:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install build && python -m build lib
+      - uses: actions/upload-artifact@v4
+        with:
+          name: library
+          path: lib/dist/
+
+  # Publishing needs a PyPI project with this repository as a trusted
+  # publisher. It runs only once the PYPI_PUBLISH variable is set to true.
+  publish-library:
+    needs: build-library
+    if: vars.PYPI_PUBLISH == 'true'
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: library
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    needs: [check, build-library, publish-library]
+    # publish-library is skipped until PyPI is turned on; a failed publish stops the release.
+    if: ${{ !cancelled() && needs.build-library.result == 'success' && needs.publish-library.result != 'failure' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: library
+          path: dist/
+      - name: Build and zip the integration
+        run: |
+          python3 scripts/vendor_lib.py build --mode "${{ needs.check.outputs.mode }}" --out build
+          cd build/prusa_connect && zip -r ../../prusa_connect.zip .
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          files: |
+            prusa_connect.zip
+            dist/*

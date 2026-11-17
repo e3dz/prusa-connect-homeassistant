@@ -1,0 +1,68 @@
+{
+  "kind": "printer",
+  "id": "ec55cbbb-8976-4cde-87ba-b96e1b7c948b",
+  "name": "Klipper DEMO-06",
+  "vendor": "Klipper",
+  "model": "Klipper",
+  "firmware": "0.12.0",
+  "serial": "DEMO-06",
+  "driver": "demo-echo",
+  "unit_uid": "DEMO-06",
+  "connected": true,
+  "capabilities": [
+    "core.command.get_status",
+    "core.command.set_nozzle_temperature",
+    "core.command.set_nozzle_temperature#celsius",
+    "core.command.start_print",
+    "core.command.start_print#path",
+    "core.feature.state_stream"
+  ],
+  "capability_epoch": 1,
+  "actions": [
+    "observe",
+    "operate",
+    "configure",
+    "administer",
+    "view_audit"
+  ],
+  "authorization_epoch": 26,
+  "profile_matched": false,
+  "state": {
+    "/state": "IDLE",
+    "/temperature/bed": 22.8,
+    "/temperature/bed_target": 0,
+    "/tool_count": 1,
+    "/tools/0/active": true,
+    "/tools/0/enabled": true,
+    "/tools/0/nozzle_target_temp": 0,
+    "/tools/0/nozzle_temp": 25.8,
+    "/tools/0/type": "FFF_PRINT_HEAD"
+  },
+  "tools": {
+    "tool_count": 1,
+    "tools": {
+      "0": {
+        "type": "FFF_PRINT_HEAD",
+        "active": true,
+        "nozzle_temp": 25.8,
+        "nozzle_target_temp": null
+      }
+    }
+  },
+  "link": {
+    "counted": false,
+    "refused_frames": 0,
+    "refused_frames_per_minute": 0,
+    "dropped_telemetry": 0,
+    "dropped_telemetry_per_minute": 0,
+    "measured_over_seconds": 0
+  },
+  "tags": [],
+  "labels": {},
+  "issues": [
+    {
+      "reason": "no_capability_profile",
+      "severity": "info"
+    }
+  ]
+}

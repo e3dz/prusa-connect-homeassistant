@@ -1,0 +1,90 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "active": {
+        "default": "mdi:printer-3d-nozzle-outline",
+        "state": {
+          "on": "mdi:printer-3d-nozzle"
+        }
+      },
+      "slot_active": {
+        "default": "mdi:tray",
+        "state": {
+          "on": "mdi:tray-arrow-down"
+        }
+      },
+      "nozzle_high_flow": {
+        "default": "mdi:printer-3d-nozzle"
+      },
+      "nozzle_hardened": {
+        "default": "mdi:printer-3d-nozzle"
+      }
+    },
+    "button": {
+      "pause": {
+        "default": "mdi:pause"
+      },
+      "resume": {
+        "default": "mdi:play"
+      },
+      "stop": {
+        "default": "mdi:stop"
+      }
+    },
+    "number": {
+      "speed": {
+        "default": "mdi:speedometer"
+      }
+    },
+    "sensor": {
+      "state": {
+        "default": "mdi:printer-3d"
+      },
+      "progress": {
+        "default": "mdi:progress-clock"
+      },
+      "time_remaining": {
+        "default": "mdi:timer-sand"
+      },
+      "time_printing": {
+        "default": "mdi:timer-outline"
+      },
+      "finish_time": {
+        "default": "mdi:clock-end"
+      },
+      "job_name": {
+        "default": "mdi:file"
+      },
+      "material": {
+        "default": "mdi:printer-3d-nozzle"
+      },
+      "slot_material": {
+        "default": "mdi:printer-3d-nozzle"
+      },
+      "nozzle_diameter": {
+        "default": "mdi:diameter-variant"
+      },
+      "print_fan_speed": {
+        "default": "mdi:fan"
+      },
+      "heatbreak_fan_speed": {
+        "default": "mdi:fan"
+      },
+      "feeder_progress": {
+        "default": "mdi:progress-wrench"
+      },
+      "feeder_command": {
+        "default": "mdi:cog-transfer"
+      },
+      "axis_x": {
+        "default": "mdi:axis-x-arrow"
+      },
+      "axis_y": {
+        "default": "mdi:axis-y-arrow"
+      },
+      "axis_z": {
+        "default": "mdi:axis-z-arrow"
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "items": [
+    {
+      "name": "cam-demo-01",
+      "device_id": "637d5756-4645-4a08-906f-e8dbb9afc56f",
+      "formats": [
+        "jpeg",
+        "mjpeg"
+      ],
+      "serving": true,
+      "min_interval_ms": 200,
+      "snapshot": true,
+      "stream": true,
+      "watch": false
+    },
+    {
+      "name": "cam-demo-02",
+      "device_id": "6d3ea1c6-dfef-4de7-8823-82cc20c3b14e",
+      "formats": [
+        "jpeg",
+        "mjpeg"
+      ],
+      "serving": true,
+      "min_interval_ms": 200,
+      "snapshot": true,
+      "stream": true,
+      "watch": false
+    },
+    {
+      "name": "cam-demo-03",
+      "device_id": "e34e1d60-3393-4d6b-a709-edb7f01cfaea",
+      "formats": [
+        "jpeg",
+        "mjpeg"
+      ],
+      "serving": true,
+      "min_interval_ms": 200,
+      "snapshot": true,
+      "stream": true,
+      "watch": false
+    },
+    {
+      "name": "cam-demo-04",
+      "device_id": "ccd78ffd-92e7-4393-a301-b06720b6e129",
+      "formats": [
+        "jpeg",
+        "mjpeg"
+      ],
+      "serving": true,
+      "min_interval_ms": 200,
+      "snapshot": true,
+      "stream": true,
+      "watch": false
+    },
+    {
+      "name": "cam-demo-06",
+      "device_id": "ec55cbbb-8976-4cde-87ba-b96e1b7c948b",
+      "formats": [
+        "jpeg",
+        "mjpeg"
+      ],
+      "serving": true,
+      "min_interval_ms": 200,
+      "snapshot": true,
+      "stream": true,
+      "watch": false
+    }
+  ]
+}

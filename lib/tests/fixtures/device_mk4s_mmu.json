@@ -1,0 +1,256 @@
+{
+  "kind": "printer",
+  "id": "6d3ea1c6-dfef-4de7-8823-82cc20c3b14e",
+  "name": "MK4S DEMO-02",
+  "vendor": "Prusa",
+  "model": "MK4S",
+  "firmware": "6.4.0-0",
+  "serial": "DEMO-02",
+  "driver": "xbuddy",
+  "unit_uid": "426EB8CBF50FDDF",
+  "connected": true,
+  "capabilities": [
+    "core.command.beep",
+    "core.command.cancel_object",
+    "core.command.cancel_object#id",
+    "core.command.cancel_printer_ready",
+    "core.command.create_folder",
+    "core.command.create_folder#path",
+    "core.command.delete_file",
+    "core.command.delete_file#path",
+    "core.command.delete_folder",
+    "core.command.delete_folder#path",
+    "core.command.dialog_action",
+    "core.command.dialog_action#button",
+    "core.command.dialog_action#dialog_id",
+    "core.command.disable_steppers",
+    "core.command.flash",
+    "core.command.flash#path",
+    "core.command.force_gcode",
+    "core.command.force_gcode#gcode",
+    "core.command.home",
+    "core.command.home#axis",
+    "core.command.load_filament",
+    "core.command.load_filament#filament",
+    "core.command.mesh_bed_leveling",
+    "core.command.move",
+    "core.command.move#feedrate",
+    "core.command.move#x",
+    "core.command.move#y",
+    "core.command.move_e",
+    "core.command.move_e#feedrate",
+    "core.command.move_e#length",
+    "core.command.move_z",
+    "core.command.move_z#distance",
+    "core.command.move_z#feedrate",
+    "core.command.pause_print",
+    "core.command.reset",
+    "core.command.reset_printer",
+    "core.command.resume_print",
+    "core.command.send_file_info",
+    "core.command.send_file_info#path",
+    "core.command.send_gcode",
+    "core.command.send_gcode#gcode",
+    "core.command.send_info",
+    "core.command.send_job_info",
+    "core.command.send_job_info#job_id",
+    "core.command.send_state_info",
+    "core.command.send_transfer_info",
+    "core.command.set_bed_temperature",
+    "core.command.set_bed_temperature#bed_temperature",
+    "core.command.set_flow",
+    "core.command.set_flow#flow",
+    "core.command.set_hostname",
+    "core.command.set_hostname#hostname",
+    "core.command.set_idle",
+    "core.command.set_nozzle_temperature",
+    "core.command.set_nozzle_temperature#nozzle_temperature",
+    "core.command.set_printer_ready",
+    "core.command.set_speed",
+    "core.command.set_speed#speed",
+    "core.command.set_token",
+    "core.command.set_token#token",
+    "core.command.set_tool_hardened",
+    "core.command.set_tool_hardened#hardened",
+    "core.command.set_tool_hardened#tool",
+    "core.command.set_tool_high_flow",
+    "core.command.set_tool_high_flow#high_flow",
+    "core.command.set_tool_high_flow#tool",
+    "core.command.set_tool_nozzle_diameter",
+    "core.command.set_tool_nozzle_diameter#nozzle_diameter",
+    "core.command.set_tool_nozzle_diameter#tool",
+    "core.command.start_print",
+    "core.command.start_print#path",
+    "core.command.start_print#tool_mapping",
+    "core.command.stop_print",
+    "core.command.stop_transfer",
+    "core.command.uncancel_object",
+    "core.command.uncancel_object#id",
+    "core.command.unload_filament",
+    "core.command.upgrade",
+    "core.command.upgrade#path",
+    "core.feature.file_upload"
+  ],
+  "capability_epoch": 1,
+  "actions": [
+    "observe",
+    "operate",
+    "configure",
+    "administer",
+    "view_audit"
+  ],
+  "authorization_epoch": 26,
+  "profile_matched": true,
+  "state": {
+    "/axis/x": 0,
+    "/axis/y": 0,
+    "/axis/z": 0,
+    "/build_volume/x": 250,
+    "/build_volume/y": 210,
+    "/build_volume/z": 220,
+    "/dialog/buttons": [
+      "Continue",
+      "Cancel"
+    ],
+    "/dialog/code": "10101",
+    "/dialog/id": 1,
+    "/dialog/text": "Load filament and continue.",
+    "/dialog/title": "Filament runout",
+    "/flow": 100,
+    "/network/hostname": "prusa-mk4s",
+    "/network/lan_ipv4": "127.0.0.1",
+    "/network/lan_mac": "10:9c:70:da:dc:92",
+    "/speed": 100,
+    "/state": "ATTENTION",
+    "/temperature/bed": 25,
+    "/temperature/bed_target": 0,
+    "/tool_count": 1,
+    "/tools/0.0/active": true,
+    "/tools/0.0/enabled": true,
+    "/tools/0.0/material_package_instance/package/material/abbreviation": "PLA",
+    "/tools/0.0/type": "FFF_FEEDER_SLOT",
+    "/tools/0.1/active": false,
+    "/tools/0.1/enabled": true,
+    "/tools/0.1/material_package_instance/package/material/abbreviation": "PETG",
+    "/tools/0.1/type": "FFF_FEEDER_SLOT",
+    "/tools/0.2/active": false,
+    "/tools/0.2/enabled": true,
+    "/tools/0.2/material_package_instance/package/material/abbreviation": "PLA",
+    "/tools/0.2/type": "FFF_FEEDER_SLOT",
+    "/tools/0.3/active": false,
+    "/tools/0.3/enabled": true,
+    "/tools/0.3/material_package_instance/package/material/abbreviation": "ASA",
+    "/tools/0.3/type": "FFF_FEEDER_SLOT",
+    "/tools/0.4/active": false,
+    "/tools/0.4/enabled": true,
+    "/tools/0.4/material_package_instance/package/material/abbreviation": "",
+    "/tools/0.4/type": "FFF_FEEDER_SLOT",
+    "/tools/0/active": true,
+    "/tools/0/enabled": true,
+    "/tools/0/features/nozzle_diameter": 0.4,
+    "/tools/0/features/nozzle_hardened": false,
+    "/tools/0/features/nozzle_high_flow": false,
+    "/tools/0/feeder/mmu_progress_code": 0,
+    "/tools/0/feeder/slot_count": 5,
+    "/tools/0/feeder/type": "MMU",
+    "/tools/0/heatbreak_fan_rpm": 8000,
+    "/tools/0/nozzle_target_temp": 0,
+    "/tools/0/nozzle_temp": 25,
+    "/tools/0/print_fan_rpm": 0,
+    "/tools/0/type": "FFF_PRINT_HEAD"
+  },
+  "tools": {
+    "tool_count": 1,
+    "tools": {
+      "0": {
+        "type": "FFF_PRINT_HEAD",
+        "active": true,
+        "features": {
+          "nozzle_diameter": 0.4,
+          "nozzle_high_flow": false,
+          "nozzle_hardened": false
+        },
+        "feeder": {
+          "slot_count": 5,
+          "type": "MMU",
+          "mmu_progress_code": 0
+        },
+        "nozzle_temp": 25,
+        "nozzle_target_temp": null,
+        "print_fan_rpm": 0,
+        "heatbreak_fan_rpm": 8000
+      },
+      "0.0": {
+        "type": "FFF_FEEDER_SLOT",
+        "active": true,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "PLA"
+            }
+          }
+        }
+      },
+      "0.1": {
+        "type": "FFF_FEEDER_SLOT",
+        "active": false,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "PETG"
+            }
+          }
+        }
+      },
+      "0.2": {
+        "type": "FFF_FEEDER_SLOT",
+        "active": false,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "PLA"
+            }
+          }
+        }
+      },
+      "0.3": {
+        "type": "FFF_FEEDER_SLOT",
+        "active": false,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "ASA"
+            }
+          }
+        }
+      },
+      "0.4": {
+        "type": "FFF_FEEDER_SLOT",
+        "active": false,
+        "material_package_instance": null
+      }
+    }
+  },
+  "build_volume": {
+    "x_mm": 250,
+    "y_mm": 210,
+    "z_mm": 220
+  },
+  "link": {
+    "counted": true,
+    "refused_frames": 0,
+    "refused_frames_per_minute": 0,
+    "dropped_telemetry": 0,
+    "dropped_telemetry_per_minute": 0,
+    "measured_over_seconds": 7.737426833
+  },
+  "tags": [],
+  "labels": {},
+  "issues": [
+    {
+      "reason": "awaiting_operator",
+      "severity": "error",
+      "detail": "Filament runout"
+    }
+  ]
+}

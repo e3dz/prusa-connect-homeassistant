@@ -1,0 +1,281 @@
+{
+  "kind": "printer",
+  "id": "e34e1d60-3393-4d6b-a709-edb7f01cfae2",
+  "name": "XL DEMO-05",
+  "vendor": "Prusa",
+  "model": "XL",
+  "firmware": "6.4.0-0",
+  "serial": "DEMO-05",
+  "driver": "xbuddy",
+  "unit_uid": "C6B06DC294E0787",
+  "connected": true,
+  "capabilities": [
+    "core.command.beep",
+    "core.command.cancel_object",
+    "core.command.cancel_object#id",
+    "core.command.cancel_printer_ready",
+    "core.command.create_folder",
+    "core.command.create_folder#path",
+    "core.command.delete_file",
+    "core.command.delete_file#path",
+    "core.command.delete_folder",
+    "core.command.delete_folder#path",
+    "core.command.dialog_action",
+    "core.command.dialog_action#button",
+    "core.command.dialog_action#dialog_id",
+    "core.command.disable_steppers",
+    "core.command.flash",
+    "core.command.flash#path",
+    "core.command.force_gcode",
+    "core.command.force_gcode#gcode",
+    "core.command.home",
+    "core.command.home#axis",
+    "core.command.load_filament",
+    "core.command.load_filament#filament",
+    "core.command.mesh_bed_leveling",
+    "core.command.move",
+    "core.command.move#feedrate",
+    "core.command.move#x",
+    "core.command.move#y",
+    "core.command.move_e",
+    "core.command.move_e#feedrate",
+    "core.command.move_e#length",
+    "core.command.move_z",
+    "core.command.move_z#distance",
+    "core.command.move_z#feedrate",
+    "core.command.pause_print",
+    "core.command.reset",
+    "core.command.reset_printer",
+    "core.command.resume_print",
+    "core.command.send_file_info",
+    "core.command.send_file_info#path",
+    "core.command.send_gcode",
+    "core.command.send_gcode#gcode",
+    "core.command.send_info",
+    "core.command.send_job_info",
+    "core.command.send_job_info#job_id",
+    "core.command.send_state_info",
+    "core.command.send_transfer_info",
+    "core.command.set_bed_temperature",
+    "core.command.set_bed_temperature#bed_temperature",
+    "core.command.set_chamber_led_intensity",
+    "core.command.set_chamber_led_intensity#chamber.led_intensity",
+    "core.command.set_enclosure_enabled",
+    "core.command.set_enclosure_enabled#enclosure_enabled",
+    "core.command.set_enclosure_postprint",
+    "core.command.set_enclosure_postprint#enclosure_postprint",
+    "core.command.set_enclosure_postprint_filtration_time",
+    "core.command.set_enclosure_postprint_filtration_time#enclosure_postprint_filtration_time",
+    "core.command.set_enclosure_printing_filtration",
+    "core.command.set_enclosure_printing_filtration#enclosure_printing_filtration",
+    "core.command.set_flow",
+    "core.command.set_flow#flow",
+    "core.command.set_hostname",
+    "core.command.set_hostname#hostname",
+    "core.command.set_idle",
+    "core.command.set_nozzle_temperature",
+    "core.command.set_nozzle_temperature#nozzle_temperature",
+    "core.command.set_nozzle_temperature#tool",
+    "core.command.set_printer_ready",
+    "core.command.set_speed",
+    "core.command.set_speed#speed",
+    "core.command.set_token",
+    "core.command.set_token#token",
+    "core.command.set_tool_hardened",
+    "core.command.set_tool_hardened#hardened",
+    "core.command.set_tool_hardened#tool",
+    "core.command.set_tool_high_flow",
+    "core.command.set_tool_high_flow#high_flow",
+    "core.command.set_tool_high_flow#tool",
+    "core.command.set_tool_nozzle_diameter",
+    "core.command.set_tool_nozzle_diameter#nozzle_diameter",
+    "core.command.set_tool_nozzle_diameter#tool",
+    "core.command.start_print",
+    "core.command.start_print#path",
+    "core.command.start_print#tool_mapping",
+    "core.command.stop_print",
+    "core.command.stop_transfer",
+    "core.command.uncancel_object",
+    "core.command.uncancel_object#id",
+    "core.command.unload_filament",
+    "core.command.upgrade",
+    "core.command.upgrade#path",
+    "core.feature.file_upload"
+  ],
+  "capability_epoch": 1,
+  "actions": [
+    "observe",
+    "operate",
+    "configure",
+    "administer",
+    "view_audit"
+  ],
+  "authorization_epoch": 26,
+  "profile_matched": true,
+  "state": {
+    "/axis/x": 0,
+    "/axis/y": 0,
+    "/axis/z": 0,
+    "/build_volume/x": 360,
+    "/build_volume/y": 360,
+    "/build_volume/z": 360,
+    "/flow": 100,
+    "/network/hostname": "prusa-xl",
+    "/network/lan_ipv4": "127.0.0.1",
+    "/network/lan_mac": "10:9c:70:cc:a5:1b",
+    "/speed": 100,
+    "/state": "IDLE",
+    "/temperature/bed": 25,
+    "/temperature/bed_target": 0,
+    "/tool_count": 5,
+    "/tools/0/active": true,
+    "/tools/0/enabled": true,
+    "/tools/0/features/nozzle_diameter": 0.4,
+    "/tools/0/features/nozzle_hardened": false,
+    "/tools/0/features/nozzle_high_flow": false,
+    "/tools/0/feeder/slot_count": 0,
+    "/tools/0/heatbreak_fan_rpm": 8000,
+    "/tools/0/material_package_instance/package/material/abbreviation": "PLA",
+    "/tools/0/nozzle_target_temp": 0,
+    "/tools/0/nozzle_temp": 25,
+    "/tools/0/print_fan_rpm": 0,
+    "/tools/0/type": "FFF_PRINT_HEAD",
+    "/tools/1/active": false,
+    "/tools/1/enabled": true,
+    "/tools/1/features/nozzle_diameter": 0.4,
+    "/tools/1/features/nozzle_hardened": true,
+    "/tools/1/features/nozzle_high_flow": true,
+    "/tools/1/feeder/slot_count": 0,
+    "/tools/1/heatbreak_fan_rpm": 8000,
+    "/tools/1/material_package_instance/package/material/abbreviation": "PETG",
+    "/tools/1/nozzle_temp": 26,
+    "/tools/1/print_fan_rpm": 0,
+    "/tools/1/type": "FFF_PRINT_HEAD",
+    "/tools/3/active": false,
+    "/tools/3/enabled": true,
+    "/tools/3/features/nozzle_diameter": 0.4,
+    "/tools/3/features/nozzle_hardened": false,
+    "/tools/3/features/nozzle_high_flow": false,
+    "/tools/3/feeder/slot_count": 0,
+    "/tools/3/heatbreak_fan_rpm": 8000,
+    "/tools/3/material_package_instance/package/material/abbreviation": "PLA",
+    "/tools/3/nozzle_temp": 28,
+    "/tools/3/print_fan_rpm": 0,
+    "/tools/3/type": "FFF_PRINT_HEAD",
+    "/tools/4/active": false,
+    "/tools/4/enabled": true,
+    "/tools/4/features/nozzle_diameter": 0.4,
+    "/tools/4/features/nozzle_hardened": false,
+    "/tools/4/features/nozzle_high_flow": false,
+    "/tools/4/feeder/slot_count": 0,
+    "/tools/4/heatbreak_fan_rpm": 8000,
+    "/tools/4/material_package_instance/package/material/abbreviation": "PVA",
+    "/tools/4/nozzle_temp": 29,
+    "/tools/4/print_fan_rpm": 0,
+    "/tools/4/type": "FFF_PRINT_HEAD",
+    "/tools/2/enabled": false
+  },
+  "tools": {
+    "tool_count": 5,
+    "tools": {
+      "0": {
+        "type": "FFF_PRINT_HEAD",
+        "active": true,
+        "features": {
+          "nozzle_diameter": 0.4,
+          "nozzle_high_flow": false,
+          "nozzle_hardened": false
+        },
+        "feeder": null,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "PLA"
+            }
+          }
+        },
+        "nozzle_temp": 25,
+        "nozzle_target_temp": null,
+        "print_fan_rpm": 0,
+        "heatbreak_fan_rpm": 8000
+      },
+      "1": {
+        "type": "FFF_PRINT_HEAD",
+        "active": false,
+        "features": {
+          "nozzle_diameter": 0.4,
+          "nozzle_high_flow": true,
+          "nozzle_hardened": true
+        },
+        "feeder": null,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "PETG"
+            }
+          }
+        },
+        "nozzle_temp": 26,
+        "print_fan_rpm": 0,
+        "heatbreak_fan_rpm": 8000
+      },
+      "2": null,
+      "3": {
+        "type": "FFF_PRINT_HEAD",
+        "active": false,
+        "features": {
+          "nozzle_diameter": 0.4,
+          "nozzle_high_flow": false,
+          "nozzle_hardened": false
+        },
+        "feeder": null,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "PLA"
+            }
+          }
+        },
+        "nozzle_temp": 28,
+        "print_fan_rpm": 0,
+        "heatbreak_fan_rpm": 8000
+      },
+      "4": {
+        "type": "FFF_PRINT_HEAD",
+        "active": false,
+        "features": {
+          "nozzle_diameter": 0.4,
+          "nozzle_high_flow": false,
+          "nozzle_hardened": false
+        },
+        "feeder": null,
+        "material_package_instance": {
+          "package": {
+            "material": {
+              "abbreviation": "PVA"
+            }
+          }
+        },
+        "nozzle_temp": 29,
+        "print_fan_rpm": 0,
+        "heatbreak_fan_rpm": 8000
+      }
+    }
+  },
+  "build_volume": {
+    "x_mm": 360,
+    "y_mm": 360,
+    "z_mm": 360
+  },
+  "link": {
+    "counted": true,
+    "refused_frames": 0,
+    "refused_frames_per_minute": 0,
+    "dropped_telemetry": 0,
+    "dropped_telemetry_per_minute": 0,
+    "measured_over_seconds": 7.759165834
+  },
+  "tags": [],
+  "labels": {},
+  "issues": []
+}
