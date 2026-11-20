@@ -1,7 +1,6 @@
 {
-  "name": "Prusa Connect (on-premise)",
+  "name": "Prusa Connect (on-premise, e3dz)",
   "homeassistant": "2025.8.0",
   "render_readme": true,
-  "zip_release": true,
-  "filename": "prusa_connect.zip"
+  "zip_release": false
 }

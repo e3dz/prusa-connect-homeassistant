@@ -1,4 +1,4 @@
-"""Buttons that pause, resume and stop a print."""
+"""Buttons that pause, resume and stop a print, and switch the motors off."""
 
 from __future__ import annotations
 
@@ -16,6 +16,10 @@ from .coordinator import PrusaConnectConfigEntry, PrusaConnectCoordinator
 from .entity import PrusaConnectEntity, async_add_entities_as_found
 from .helpers import command
 from .library import VERB_PAUSE_PRINT, VERB_RESUME_PRINT, VERB_STOP_PRINT, Device, PrusaConnect
+
+# Not in the library yet: the printer's own verb for M84, which releases the
+# steppers so the motors stop holding (and humming) while the printer idles.
+VERB_DISABLE_STEPPERS = "core.command.disable_steppers"
 
 PARALLEL_UPDATES = 1
 
@@ -51,6 +55,14 @@ BUTTONS: tuple[PrintButtonDescription, ...] = (
         verb=VERB_STOP_PRINT,
         press_fn=lambda client, device_id: client.stop_print(device_id),
         prusa_states=frozenset({"printing", "paused", "attention"}),
+    ),
+    # Never while a print runs or is paused: the head would lose its position.
+    PrintButtonDescription(
+        key="disable_steppers",
+        translation_key="disable_steppers",
+        verb=VERB_DISABLE_STEPPERS,
+        press_fn=lambda client, device_id: client.command(device_id, VERB_DISABLE_STEPPERS),
+        prusa_states=frozenset({"idle", "ready", "finished", "stopped"}),
     ),
 )
 

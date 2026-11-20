@@ -140,3 +140,40 @@ async def test_observe_only_token_gets_no_controls(
     assert hass.states.async_entity_ids("button") == []
     assert hass.states.async_entity_ids("number") == []
     assert hass.states.async_entity_ids("sensor")
+
+
+async def test_disable_motors_only_when_not_printing(
+    hass: HomeAssistant, setup_integration: MockConfigEntry, mock_client: FakeClient
+) -> None:
+    # The CORE One fixture is printing, so the button is there but unavailable.
+    state = hass.states.get(_entity_id(hass, "button", f"{CORE_ONE}:disable_steppers"))
+    assert state is not None
+    assert state.state == "unavailable"
+
+
+async def test_chamber_light_sends_percent(
+    hass: HomeAssistant, setup_integration: MockConfigEntry, mock_client: FakeClient
+) -> None:
+    light = _entity_id(hass, "light", f"{CORE_ONE}:chamber_light")
+    await hass.services.async_call(
+        "light", "turn_on", {ATTR_ENTITY_ID: light, "brightness": 128}, blocking=True
+    )
+    await hass.services.async_call("light", "turn_off", {ATTR_ENTITY_ID: light}, blocking=True)
+    await hass.services.async_call("light", "turn_on", {ATTR_ENTITY_ID: light}, blocking=True)
+    assert mock_client.commands == [
+        (CORE_ONE, "core.command.set_chamber_led_intensity", {"chamber.led_intensity": 50}),
+        (CORE_ONE, "core.command.set_chamber_led_intensity", {"chamber.led_intensity": 0}),
+        (CORE_ONE, "core.command.set_chamber_led_intensity", {"chamber.led_intensity": 50}),
+    ]
+    state = hass.states.get(light)
+    assert state is not None
+    assert state.state == "on"
+    assert state.attributes["brightness"] == 128
+
+
+async def test_no_chamber_light_without_the_verb(
+    hass: HomeAssistant, setup_integration: MockConfigEntry
+) -> None:
+    assert (
+        er.async_get(hass).async_get_entity_id("light", DOMAIN, f"{INSTANCE}:{KLIPPER}:chamber_light") is None
+    )

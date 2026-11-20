@@ -167,6 +167,9 @@
       },
       "stop": {
         "name": "Stop print"
+      },
+      "disable_steppers": {
+        "name": "Disable motors"
       }
     },
     "camera": {
@@ -266,6 +269,11 @@
     "update": {
       "server": {
         "name": "Server"
+      }
+    },
+    "light": {
+      "chamber_light": {
+        "name": "Chamber light"
       }
     }
   },

@@ -1,3 +1,10 @@
+> **Fork (e3dz):** Prusa's integration plus a **Chamber light** (dimmable,
+> `core.command.set_chamber_led_intensity`) and a **Disable motors** button
+> (`core.command.disable_steppers`, only offered while the printer is not
+> printing). Both need the *operate* scope. Installed in HACS as a custom
+> repository from this fork; `hacs.json` installs from the branch instead of
+> a release zip. Built on Prusa Connect by Prusa Research.
+
 # Prusa Connect (on-premise) for Home Assistant
 
 [![Release](https://img.shields.io/github/v/release/prusa3d/prusa-connect-homeassistant)](https://github.com/prusa3d/prusa-connect-homeassistant/releases)

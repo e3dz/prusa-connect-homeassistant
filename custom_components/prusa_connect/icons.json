@@ -29,6 +29,9 @@
       },
       "stop": {
         "default": "mdi:stop"
+      },
+      "disable_steppers": {
+        "default": "mdi:engine-off"
       }
     },
     "number": {
@@ -84,6 +87,11 @@
       },
       "axis_z": {
         "default": "mdi:axis-z-arrow"
+      }
+    },
+    "light": {
+      "chamber_light": {
+        "default": "mdi:led-strip-variant"
       }
     }
   }
